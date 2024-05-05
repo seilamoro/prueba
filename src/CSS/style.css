@@ -114,6 +114,10 @@ div {
     margin-top: 2em;
 }
 
+.trackAudio-control {
+    width: 100%;
+}
+
 .episode-content-div {
     position: absolute;
     bottom: 0;
@@ -219,6 +223,7 @@ th {
   }
   .shadow-div{
     box-shadow: -3px 3px 5px 0px rgba(230, 230, 230, 1), 3px 3px 5px 0px rgba(230, 230, 230, 1);
+    z-index: -2;
   }
   @keyframes animloader {
     0% {
