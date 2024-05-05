@@ -10,7 +10,10 @@ const EpisodeView = () => {
     let { episodeId } = useParams();
     
     const url = `https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=20`;
-    const  { episodeData, isLoading }  = useFetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`${url}`)}`, `episode_${podcastId}`);
+    const  { episodeData, isLoading, isError, error }  = useFetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`${url}`)}`, `episode_${podcastId}`);
+    if(isError) {
+        console.error(error);
+    }
     const podcastData = episodeData? episodeData[0] : null;
     const episodeList = episodeData? episodeData: [];
 

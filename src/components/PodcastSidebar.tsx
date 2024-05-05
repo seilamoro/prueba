@@ -5,7 +5,10 @@ import { PodcastData } from '../interfaces/podcast';
 const PodcastSidebar = (props: any) => {
     const podcastData: PodcastData = props.data;
 
-    const  { data } = useFetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json', "podcast");
+    const  { data, isError, error } = useFetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json', "podcast");
+    if(isError) {
+        console.error(error);
+    }
     const podcastDescriptionData = data? data : [];
     let img = "";
     let podcastDescription = "";

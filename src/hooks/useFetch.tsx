@@ -28,6 +28,7 @@ export const useFetch = (url: string, key: string) => {
     }
     let isLoading = query.isLoading;
     let isError = query.isError;
+    let error = query.error;
 
-    return { data, episodeData, isLoading, isError }
+    return { data, episodeData, isLoading, isError, error }
 }

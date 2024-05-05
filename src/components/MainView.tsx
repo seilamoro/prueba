@@ -9,7 +9,10 @@ const MainView = () => {
     const [value, setValue] = useState('');
     const [podcastList, setPodcastList] = useState([]);
 
-    const  { data, isLoading } = useFetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json', "podcast");
+    const  { data, isLoading, isError, error } = useFetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json', "podcast");
+    if(isError) {
+        console.error(error);
+    }
     const podcastData = data? data : [];
 
     const listPodcast = podcastList.map((entry: any, index: number) => {
