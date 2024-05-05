@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainView from './components/MainView';
+import PodcastView from './components/PodcastView'
 
 const queryClient = new QueryClient()
 
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainView/>,
+  },
+  {
+    path: "/podcast/:podcastId",
+    element: <PodcastView/>,
   },
 ])
 

@@ -17,11 +17,17 @@ export const useFetch = (url: string, key: string) => {
     })
 
     let data = undefined;
+    let episodeData = undefined;
     if(query.data !== undefined) {
-        data = query.data.data.feed.entry;
+        if(key === "podcast") {
+            data = query.data.data.feed.entry;
+        }
+        else {
+            episodeData = JSON.parse(query.data?.data.contents).results;
+        }
     }
     let isLoading = query.isLoading;
     let isError = query.isError;
 
-    return { data, isLoading, isError }
+    return { data, episodeData, isLoading, isError }
 }

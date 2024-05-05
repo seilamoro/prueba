@@ -100,7 +100,26 @@ div {
 
 .centerContent {
     flex: 0 0 auto;
-    width: 66.5%;
+    width: 61.5%;
+    position: relative;
+    height: 100%;
+    margin-left: 3%;
+}
+
+.episodeCard-div{
+    margin-left: 2em;
+}
+
+.trackAudio-div{
+    margin-top: 2em;
+}
+
+.episode-content-div {
+    position: absolute;
+    bottom: 0;
+    height: 97%;
+    width: 100%;
+    border-top: 0.5px solid rgba(230, 230, 230, 1);
 }
 
 .podcart-card {
@@ -175,10 +194,12 @@ th {
 .siderbar-text {
     padding: 15px;
     border-width: 0px 0px 1px;
-    border-color: #dee2e6;
-    border: 1px solid #dee2e6;
-    border-top: none;
     word-break: break-word;
+}
+
+.siderbar-hr {
+    width: 87%;
+    border-color: #dee2e6;
 }
 
 .loading-container {
