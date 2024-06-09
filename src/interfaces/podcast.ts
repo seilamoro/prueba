@@ -1,25 +1,26 @@
 
 interface Podcast {
-    id: any,
-    title: any,
-    'im:name': any;
-    'im:artist': any;
-    'im:image': Image[];
-    summary: any;
+    id: string,
+    title: string,
+    name: string;
+    artist: string;
+    image: string;
+    summary: string;
 }
 
 interface PodcastData {
     trackId: string,
     trackName: string,
-    artistName: string;
-    artworkUrl100: string;
-    artworkUrl600: string;
-    feedUrl: string;
+    artist: string;
+    image: string;
 }
 
-interface Image {
-    label: string;
-    attributes: any;
+interface PropsPodcast {
+    data: Podcast;
 }
 
-export type {Podcast, PodcastData };
+interface PropsPodcastData {
+    data: PodcastData | null;
+}  
+
+export type {Podcast, PodcastData, PropsPodcast, PropsPodcastData };

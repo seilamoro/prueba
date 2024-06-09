@@ -5,7 +5,7 @@ import PodcastCard from '../PodcastCard';
 import { mockCallPodcasts } from './mock';
 
 test('renders the podcast card', async () => {
-    render(<BrowserRouter><PodcastCard data={mockCallPodcasts.data[0]} /></BrowserRouter>);
+    render(<BrowserRouter><PodcastCard data={mockCallPodcasts.data[0]} key="1" /></BrowserRouter>);
     let element = await screen.findByTestId('divPodcastImg');
     expect(element).toBeInTheDocument();
     element = await screen.findByTestId('divPodcastTitle');
@@ -15,7 +15,7 @@ test('renders the podcast card', async () => {
 });
 
 test('renders the podcast data', () => {
-    render(<BrowserRouter><PodcastCard data={mockCallPodcasts.data[0]} /></BrowserRouter>);
+    render(<BrowserRouter><PodcastCard data={mockCallPodcasts.data[0]} key="1" /></BrowserRouter>);
     let element = screen.getByText(/The Joe Budden Podcast/i);
     expect(element).toBeInTheDocument();
     element = screen.getByText(/The Joe Budden Network/i);

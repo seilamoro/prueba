@@ -1,5 +1,9 @@
-const Loading = (props: any) => {
-    const isLoading = props.loading;
+interface PropsLoading {
+    loading: boolean;
+}  
+
+const Loading = (props: PropsLoading) => {
+    const isLoading: boolean = props.loading;
 
     if(isLoading) {
         return (

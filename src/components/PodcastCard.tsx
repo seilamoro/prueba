@@ -1,18 +1,17 @@
 import { Link } from 'react-router-dom';
-import { Podcast } from '../interfaces/podcast';
+import { Podcast, PropsPodcast } from '../interfaces/podcast';
 
-const PodcastCard = (props: any) => {
+const PodcastCard = (props: PropsPodcast) => {
     const podcastData: Podcast = props.data;
-    const img = podcastData?.['im:image'][podcastData?.['im:image'].length-1].label;
-    const title = podcastData.title.label.split(" - ")[0];
+    const title: string = podcastData.title.split(" - ")[0];
 
     return (
         <div className='link-card'><div className='podcart-card1 shadow-div'></div>
-            <Link key={podcastData.id.label} to={`/podcast/${podcastData.id.attributes?.['im:id']}`} className='link-notUnderLine'>
+            <Link key={podcastData.id} to={`/podcast/${podcastData.id}`} className='link-notUnderLine'>
                 <div className='podcart-card'>
-                    <div data-testid='divPodcastImg'><img src={img} alt="imagen podcast" className='circular--square'></img></div>
+                    <div data-testid='divPodcastImg'><img src={podcastData.image} alt="imagen podcast" className='circular--square'></img></div>
                     <div data-testid='divPodcastTitle'><strong>{title}</strong></div>
-                    <div data-testid='divPodcastAuthor'>Author: {podcastData['im:artist'].label}</div>
+                    <div data-testid='divPodcastAuthor'>Author: {podcastData.artist}</div>
                 </div>
             </Link>
         </div>

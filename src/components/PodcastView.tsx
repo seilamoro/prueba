@@ -4,19 +4,18 @@ import PodcastSidebar from './PodcastSidebar';
 import EpisodeList from './EpisodeList';
 import Loading from './Loading';
 import Header from './Header';
+import { Episode } from "../interfaces/episode";
 
 const PodcastView = () => {
     let { podcastId } = useParams();
     
     const url = `https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=20`;
-    const  { episodeData, isLoading, isError, error }  = useFetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`${url}`)}`, `episode_${podcastId}`);
+    const  { podcastData, episodeData, isLoading, isError, error }  = useFetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`${url}`)}`, `episode_${podcastId}`);
     if(isError) {
         console.error(error);
     }
-    const podcastData = episodeData? episodeData[0] : null;
-    const episodeList = episodeData? episodeData: [];
-
-    const podcastSidebar = podcastData ? <PodcastSidebar data={podcastData}></PodcastSidebar> : <div className='cards'></div>
+    const podcastDataAux: null = podcastData? podcastData : null;
+    const episodeList: Episode[] = episodeData? episodeData: [];
   
     return (
         <div className="main-container">
@@ -24,10 +23,10 @@ const PodcastView = () => {
             <Loading loading={isLoading}></Loading>
             <div className="div-container">
                 <div className="leftContent" data-testid='divSiderbar'>
-                    {podcastSidebar}
+                    <PodcastSidebar data={podcastDataAux}></PodcastSidebar>
                 </div>
                 <div className="centerContent" data-testid='divList'>
-                    <EpisodeList data={episodeList} podcastId={podcastId}></EpisodeList>
+                    <EpisodeList episodeList={episodeList} podcastId={podcastId}></EpisodeList>
                 </div>
             </div>
         </div>

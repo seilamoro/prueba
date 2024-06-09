@@ -2,7 +2,7 @@ interface EpisodeList {
     results: Episode[];
 }
 
-type Episode = {
+interface Episode {
     trackId: number,
     trackName: string,
     description: string,
@@ -13,4 +13,15 @@ type Episode = {
     episodeFileExtension: string,
 }
 
-export type {EpisodeList, Episode};
+interface PropsEpisode {
+    episodeId?: string | null;
+    podcastId?: string | null;
+    episodeList?: Episode[] | null;
+}
+
+interface PropsEpisodeList {
+    podcastId: string | undefined;
+    episodeList: Episode[];
+}
+
+export type {EpisodeList, Episode, PropsEpisode, PropsEpisodeList};

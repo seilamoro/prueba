@@ -5,7 +5,7 @@ import EpisodeList from '../EpisodeList';
 import { mockCallPodcasts } from './mock';
 
 test('renders the episode list', async () => {
-    render(<BrowserRouter><EpisodeList data={mockCallPodcasts.episodeData} /></BrowserRouter>);
+    render(<BrowserRouter><EpisodeList episodeList={mockCallPodcasts.episodeData} podcastId={"1535809341"} /></BrowserRouter>);
     let element = await screen.findByTestId('episodeName_1');
     expect(element).toBeInTheDocument();
     element = await screen.findByTestId('episodeDate_1');
@@ -19,7 +19,7 @@ test('renders the episode list', async () => {
 });
 
 test('renders the episode list data', () => {
-    render(<BrowserRouter><EpisodeList data={mockCallPodcasts.episodeData} /></BrowserRouter>);
+    render(<BrowserRouter><EpisodeList episodeList={mockCallPodcasts.episodeData} podcastId={"1535809341"} /></BrowserRouter>);
     let element = screen.getByText(/You Know More Words Than Me/i);
     expect(element).toBeInTheDocument();
     element = screen.getByText(/192:00/i);

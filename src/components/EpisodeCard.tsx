@@ -1,12 +1,12 @@
-import { Episode } from '../interfaces/episode';
+import { Episode, PropsEpisode } from '../interfaces/episode';
 
-const EpisodeCard = (props: any) => {
-    const episodeId = props.episodeId;
-    const episodeIdAux = episodeId? parseInt(episodeId) : 0;
-    const episodeData: Episode = props.episodeList.find((entry: Episode, index: number) => index !== 0 && entry.trackId === episodeIdAux);
+const EpisodeCard = (props: PropsEpisode) => {
+    const episodeId: string | null | undefined = props.episodeId;
+    const episodeIdAux: number = episodeId? parseInt(episodeId) : 0;
+    const episodeData: Episode | null | undefined = props.episodeList?.find((entry: Episode, index: number) => index !== 0 && entry.trackId === episodeIdAux);
 
     if(episodeData) {
-        const sourceType = episodeData.episodeContentType + "/" + episodeData.episodeFileExtension;
+        const sourceType: string = episodeData.episodeContentType + "/" + episodeData.episodeFileExtension;
         return (
             <div className="episodeCard-div">
                 <div><h2 data-testid='trackName'>{episodeData.trackName}</h2></div>

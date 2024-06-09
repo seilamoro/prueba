@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@tanstack/query-sync-storage-persister": "^5.40.0",
     "@tanstack/react-query": "^5.34.1",
+    "@tanstack/react-query-persist-client": "^5.40.1",
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.96",
@@ -23,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "e2e": "cypress run"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +46,8 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.1.0",
+    "@testing-library/react": "^16.0.0",
     "cypress": "^13.8.1"
   }
 }

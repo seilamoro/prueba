@@ -11,7 +11,7 @@ jest.mock('../../hooks/useFetch', () => ({
 }));
 
 test('renders the podcast card', async () => {
-    render(<BrowserRouter><PodcastSidebar data={mockCallPodcasts.episodeData[0]} /></BrowserRouter>);
+    render(<BrowserRouter><PodcastSidebar data={mockCallPodcasts.podcastData} /></BrowserRouter>);
     let element = await screen.findByTestId('divPodcastImg');
     expect(element).toBeInTheDocument();
     element = await screen.findByTestId('divPodcastName');

@@ -1,22 +1,22 @@
 import { Link } from 'react-router-dom';
-import { Episode } from '../interfaces/episode';
+import { Episode, PropsEpisodeList } from '../interfaces/episode';
 
-const EpisodeList = (props: any) => {
+const EpisodeList = (props: PropsEpisodeList) => {
     function millisToMinutesAndSeconds(millis: number) {
         let minutes: number = Math.floor(millis / 60000);
         let seconds: number = parseInt(((millis % 60000) / 1000).toFixed(0));
         return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
     }
 
-    const episodeList = props.data.map((entry: Episode, index: number) => {
+    const episodeListData = props.episodeList.map((entry: Episode, index: number) => {
         if(index === 0) {
             return null;
         }
-        let dateObject = new Date(entry.releaseDate);
-        let date = (dateObject.getDate()+'').length < 2 ? "0"+dateObject.getDate() : dateObject.getDate()+"";
-        let mount = ((dateObject.getMonth()+1)+'').length < 2 ? "0"+(dateObject.getMonth()+1) : (dateObject.getMonth()+1)+"";
-        let dateString = date + "/" + mount + "/" + dateObject.getFullYear();
-        const duration = entry.trackTimeMillis? millisToMinutesAndSeconds(parseInt(entry.trackTimeMillis)) : "";
+        let dateObject: Date = new Date(entry.releaseDate);
+        let date: string = (dateObject.getDate()+'').length < 2 ? "0"+dateObject.getDate() : dateObject.getDate()+"";
+        let mount: string = ((dateObject.getMonth()+1)+'').length < 2 ? "0"+(dateObject.getMonth()+1) : (dateObject.getMonth()+1)+"";
+        let dateString: string = date + "/" + mount + "/" + dateObject.getFullYear();
+        const duration: string = entry.trackTimeMillis? millisToMinutesAndSeconds(parseInt(entry.trackTimeMillis)) : "";
 
         return (
             <tr key={index}>
@@ -31,8 +31,20 @@ const EpisodeList = (props: any) => {
             
         )
     })
-    
-    const numEpisodes = props.data.length !== 0? props.data.length-1 : "";
+
+    const episodeListSkeleton: JSX.Element = (
+            <><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></>
+        )
+
+    const episodeList: JSX.Element | (JSX.Element | null)[] = props.episodeList.length !== 0 ? episodeListData : episodeListSkeleton;
+
+    const numEpisodes: number | JSX.Element = props.episodeList.length !== 0? props.episodeList.length-1 : (<span className='siderbar-skeleton-episodesNum'>&nbsp;&nbsp;</span>);
 
     return (
         <div>
